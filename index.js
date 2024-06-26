@@ -36,15 +36,15 @@ window.addEventListener("load", function () {
   }
 
   var buildUrl = "Build";
-  var loaderUrl = buildUrl + "/WebGL_Build.loader.js";
+  var loaderUrl = buildUrl + "/web_build.loader.js";
   var config = {
-    dataUrl: buildUrl + "/WebGL_Build.data",
-    frameworkUrl: buildUrl + "/WebGL_Build.framework.js",
-    codeUrl: buildUrl + "/WebGL_Build.wasm",
+    dataUrl: buildUrl + "/web_build.data.unityweb",
+    frameworkUrl: buildUrl + "/web_build.framework.js.unityweb",
+    codeUrl: buildUrl + "/web_build.wasm.unityweb",
     streamingAssetsUrl: "StreamingAssets",
-    companyName: "Knife Hit",
-    productName: "Knife Hit",
-    productVersion: "2.0",
+    companyName: "DefaultCompany",
+    productName: "C# TonConnect",
+    productVersion: "1.0",
     showBanner: unityShowBanner,
   };
 
