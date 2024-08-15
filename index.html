@@ -102,10 +102,9 @@
 
       
       const urlParams = new URLSearchParams(window.location.search);
-      const myParam = urlParams.get('token');
+      const token = urlParams.get('token');
 
       console.log("token: ", token);
-
 
       var script = document.createElement("script");
       script.src = loaderUrl;
