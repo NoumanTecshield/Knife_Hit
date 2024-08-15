@@ -118,7 +118,6 @@
             if(token) {
                 const apiUrl = `https://teletgramtest-bot.tecshield.net/api/get_user_data/${token}`;
                 fetch(apiUrl, {
-                    mode: 'no-cors',
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
