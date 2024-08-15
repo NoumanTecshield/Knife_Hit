@@ -105,8 +105,6 @@
       const urlParams = new URLSearchParams(window.location.search);
       const token = urlParams.get('token');
 
-      console.log("token: ", token);
-
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
@@ -118,20 +116,27 @@
                   unityInstance.SetFullscreen(1);
                 };
 
-                const apiUrl = `http://3.133.5.120/api/get_user_data/${token}`;
-                fetch(apiUrl, {
-                  method: 'GET',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                }).then(response => response.json())
-                  .then(data => {
-                    unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
-                  })
-                  .catch(error => {
-                    console.error('Error:', error);
+                if(token) {
+                  const apiUrl = `http://3.133.5.120/api/get_user_data/${token}`;
+                  fetch(apiUrl, {
+                    mode: 'no-cors',
+                    method: 'GET',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                  }).then(response => response.json())
+                    .then(data => {
+                      unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
+                    })
+                    .catch(error => {
+                      console.error('Error:', error);
+                      unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify({}));
+                    });
+                  } else {
                     unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify({}));
-                  });
+                  }
+
+                
 
               }).catch((message) => {
                 alert(message);
