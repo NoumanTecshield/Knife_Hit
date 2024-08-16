@@ -103,9 +103,6 @@
 
     loadingBar.style.display = "block";
 
-
-
-
     function extractUserIdFromUrl() {
     // Get the URL hash part (everything after #)
       const hash = window.location.hash.substring(1);
@@ -139,21 +136,7 @@
       return null;
     }
 
-// Example usage
-const userId = extractUserIdFromUrl();
-
-console.log("Extracted User ID:", userId);
-
-
-
-
-    // const id = JSON.parse(localStorage.getItem("user_auth")).id;
-    const id = 123456;
-
-    window.onload = function() {
-      console.log("WINDOW LOADED");
-      console.log("localStorage: ", localStorage);
-    };
+    const userId = extractUserIdFromUrl();
 
     var script = document.createElement("script");
     script.src = loaderUrl;
@@ -174,10 +157,8 @@ console.log("Extracted User ID:", userId);
 
         // console.log("user_auth: ", localStorage.getItem("user_auth"))
 
-        console.log("ID Inside: ", id);
-
-        if(id) {
-          const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${id}`;
+        if(userId) {
+          const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${userId}`;
           fetch(apiUrl, {
             method: 'GET',
             headers: {
@@ -196,7 +177,7 @@ console.log("Extracted User ID:", userId);
           }
 
       }).catch((message) => {
-        alert(message);
+        console.error(message)
       });
     };
 
