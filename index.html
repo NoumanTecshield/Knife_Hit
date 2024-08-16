@@ -136,8 +136,6 @@
     // const id = JSON.parse(localStorage.getItem("user_auth")).id;
     const id = 123456;
 
-    console.log("user_auth: ", localStorage.getItem("user_auth"))
-
     var script = document.createElement("script");
     script.src = loaderUrl;
     script.onload = () => {
@@ -155,7 +153,10 @@
         // unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
         // console.log('DATA SENT TO WEBGL');
 
+        console.log("user_auth: ", localStorage.getItem("user_auth"))
+        
         console.log("ID Inside: ", id);
+
         if(id) {
           const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${id}`;
           fetch(apiUrl, {
