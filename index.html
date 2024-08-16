@@ -147,9 +147,8 @@
                 };
 
                 if(token) {
-                  const apiUrl = `http://3.133.5.120/api/get_user_data/${token}`;
+                  const apiUrl = `https://telegramtest-bot.tecshield.net/api/get_user_data/${token}`;
                   fetch(apiUrl, {
-                    mode: 'no-cors',
                     method: 'GET',
                     headers: {
                       'Content-Type': 'application/json',
