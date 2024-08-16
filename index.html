@@ -133,9 +133,9 @@
 
 
 
-    const token = JSON.parse(localStorage.getItem("user_auth")).id;
+    const id = JSON.parse(localStorage.getItem("user_auth")).id;
 
-    console.log("token: ", token)
+    console.log("ID: ", id)
 
     var script = document.createElement("script");
     script.src = loaderUrl;
@@ -144,7 +144,7 @@
         progressBarFull.style.width = 100 * progress + "%";
       }).then((unityInstance) => {
         loadingBar.style.display = "none";
-        fullscreenButton.onclick = () => {
+        fullscreenButton.onclick = () => {  
           unityInstance.SetFullscreen(1);
         };
 
@@ -154,8 +154,9 @@
         // unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
         // console.log('DATA SENT TO WEBGL');
 
-        if(token) {
-          const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${token}`;
+        console.log("ID Inside: ", id);
+        if(id) {
+          const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${id}`;
           fetch(apiUrl, {
             method: 'GET',
             headers: {
