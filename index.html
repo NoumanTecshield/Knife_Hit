@@ -133,11 +133,9 @@
 
 
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
+    const token = JSON.parse(localStorage.getItem("user_auth")).id;
 
     console.log("token: ", token)
-
 
     var script = document.createElement("script");
     script.src = loaderUrl;
@@ -150,30 +148,30 @@
           unityInstance.SetFullscreen(1);
         };
 
-        const data = { "userId": "5993426133", "id": 5993426133, "firstName": "Muhammad Nouman", "lastName": "Amjad", "username": "Oye_Sherry_01", "profileImage": "https://api.telegram.org/file/bot7212416017:AAHxzZbjvrPnjfgGPo9C_stanYeW7_PAhQ8/photos/file_4.jpg" }
+        // const data = { "userId": "5993426133", "id": 5993426133, "firstName": "Muhammad Nouman", "lastName": "Amjad", "username": "Oye_Sherry_01", "profileImage": "https://api.telegram.org/file/bot7212416017:AAHxzZbjvrPnjfgGPo9C_stanYeW7_PAhQ8/photos/file_4.jpg" }
 
-        console.log('START SENDING DATA INSIDE WEBGL');
-        unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
-        console.log('DATA SENT TO WEBGL');
+        // console.log('START SENDING DATA INSIDE WEBGL');
+        // unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
+        // console.log('DATA SENT TO WEBGL');
 
-        // if(token) {
-        //   const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${token}`;
-        //   fetch(apiUrl, {
-        //     method: 'GET',
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //     },
-        //   }).then(response => response.json())
-        //     .then(data => {
-        //       unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
-        //     })
-        //     .catch(error => {
-        //       console.error('Error:', error);
-        //       unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify({}));
-        //     });
-        //   } else {
-        //     unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify({}));
-        //   }
+        if(token) {
+          const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${token}`;
+          fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }).then(response => response.json())
+            .then(data => {
+              unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify({}));
+            });
+          } else {
+            unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify({}));
+          }
 
       }).catch((message) => {
         alert(message);
