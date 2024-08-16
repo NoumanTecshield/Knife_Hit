@@ -133,9 +133,10 @@
 
 
 
-    const id = JSON.parse(localStorage.getItem("user_auth")).id;
+    // const id = JSON.parse(localStorage.getItem("user_auth")).id;
+    const id = 123456;
 
-    console.log("ID: ", id)
+    console.log("user_auth: ", localStorage.getItem("user_auth"))
 
     var script = document.createElement("script");
     script.src = loaderUrl;
